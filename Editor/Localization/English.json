@@ -1,0 +1,94 @@
+{
+    "Properties": [
+        {
+            "Name": "Dissolve Point Min",
+            "DisplayName": "Dissolve Time Min",
+            "Tooltip": "Minimum value reached when \"Dissolve Time\" is set to 0"
+        },
+        {
+            "Name": "Dissolve Point Max",
+            "DisplayName": "Dissolve Time Max",
+            "Tooltip": "Maximum value reached when \"Dissolve Time\" is set to 1"
+        },
+        {
+            "Name": "Dissolve Type selector",
+            "DisplayName": "Dissolve Path Type",
+            "Tooltip": "Type of path used for dissolve:\n - UVs: uses uv coordinates for the dissolve\n - Texture: uses a texture for the dissolve"
+        },
+        {
+            "Name": "UV Dissolve Container",
+            "DisplayName": "UV Dissolve Container",
+            "Tooltip": ""
+        },
+        {
+            "Name": "Dissolve UV Selector",
+            "DisplayName": "UV",
+            "Tooltip": "UV coordinate to use"
+        },
+        {
+            "Name": "Dissolve UV Rotation",
+            "DisplayName": "Rotation",
+            "Tooltip": "Rotation of the dissolve UV"
+        },
+        {
+            "Name": "Dissolve Coordinate",
+            "DisplayName": "Dissolve Coordinate",
+            "Tooltip": ""
+        },
+        {
+            "Name": "Texture Dissolve Container",
+            "DisplayName": "Texture Dissolve Container",
+            "Tooltip": ""
+        },
+        {
+            "Name": "Edge Smoothness",
+            "DisplayName": "Edge Smoothness",
+            "Tooltip": ""
+        },
+        {
+            "Name": "Dissolve Section",
+            "DisplayName": "Dissolve",
+            "Tooltip": "Dissolve effect"
+        },
+        {
+            "Name": "Dissolve Section_Path",
+            "DisplayName": "Effects",
+            "Tooltip": ""
+        },
+        {
+            "Name": "Warning",
+            "DisplayName": "To see the dissolve effect you also need to have the blend mode to something different than opaque",
+            "Tooltip": ""
+        },
+        {
+            "Name": "Dissolve Texture",
+            "DisplayName": "Dissolve Path Texture",
+            "Tooltip": "Texture used for the dissolve effect"
+        },
+        {
+            "Name": "Dissolve Texture_UV",
+            "DisplayName": "UV",
+            "Tooltip": ""
+        },
+        {
+            "Name": "Dissolve Color",
+            "DisplayName": "Edge Color",
+            "Tooltip": "Color of the dissolve edge"
+        },
+        {
+            "Name": "Emissive Toggle",
+            "DisplayName": "Emissive Edge",
+            "Tooltip": ""
+        },
+        {
+            "Name": "Dissolve Point",
+            "DisplayName": "Dissolve Time",
+            "Tooltip": "Dissolve time to define the point of the dissolve effect"
+        },
+        {
+            "Name": "Dissolve Edge Width",
+            "DisplayName": "Edge Width",
+            "Tooltip": "Width of the edge color"
+        }
+    ]
+}

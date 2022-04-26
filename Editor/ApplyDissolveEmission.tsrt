@@ -1,0 +1,6 @@
+void ApplyDissolveEmission()
+{
+    #if defined (UNITY_PASS_FORWARDBASE)
+        FinalColor.rgb += Dissolve * _EmissiveDissolve;
+    #endif
+}

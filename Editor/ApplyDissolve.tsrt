@@ -1,0 +1,46 @@
+float2 UnityRotateDegreesfloat(float2 UV, float2 Center, float Rotation)
+{
+    Rotation = Rotation * (3.1415926f/180.0f);
+    UV -= Center;
+    float s = sin(Rotation);
+    float c = cos(Rotation);
+    float2x2 rMatrix = float2x2(c, -s, s, c);
+    rMatrix *= 0.5;
+    rMatrix += 0.5;
+    rMatrix = rMatrix * 2 - 1;
+    UV.xy = mul(UV.xy, rMatrix);
+    UV += Center;
+    return UV;
+}
+
+void ApplyDissolve()
+{
+    float dissolve = 0;
+    if(_DissolveType < 1)
+    {
+        float2 uvs = Uvs[_DissolveTexture_UV];
+        float2 customUvs = UnityRotateDegreesfloat(uvs, 0.5, _DissolveRotation);
+        dissolve = _DissolveCoordinate > 0 ? customUvs.x : customUvs.y;
+
+        _DissolvePoint = remap(_DissolvePoint, 0, 1,  _DissolvePointMin, _DissolvePointMax);
+    }
+    else
+    {
+        dissolve = UNITY_SAMPLE_TEX2D_SAMPLER(_DissolveTexture, _MainTex, TSR_TRANSFORM_TEX(Uvs, _DissolveTexture)).r;
+    }
+    //dissolve = Uvs[_DissolveTexture_UV].x;
+    _DissolveEdgeWidth = max(_DissolveEdgeWidth, 0.00001);
+    _EdgeSmoothness = max(_EdgeSmoothness, 0.00001);
+    float remappedDissolvePoint = remap(_DissolvePoint, 0, 1, 0 - _DissolveEdgeWidth, 1 + _DissolveEdgeWidth);
+    float dissolveSmoother = remappedDissolvePoint + _DissolveEdgeWidth * (1 - _EdgeSmoothness);
+
+    float smoothPlus = smoothstep(remappedDissolvePoint + _DissolveEdgeWidth, dissolveSmoother, dissolve);
+    float smoothMinus = smoothstep(remappedDissolvePoint - _DissolveEdgeWidth, dissolveSmoother, dissolve);
+    float smoothEdge = smoothPlus * smoothMinus;
+
+    Dissolve = _DissolveColor * smoothEdge;
+
+    Albedo.rgb += Dissolve * (1 - _EmissiveDissolve);
+
+    Albedo.a = min(Albedo.a, smoothMinus);
+}
